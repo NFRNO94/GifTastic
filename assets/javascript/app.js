@@ -25,6 +25,8 @@ function renderButtons() {
   }
 }
 
+// create a function to get the vale of the input, and 
+//run renderbuttons to show the button for the value
 $("#add-artist").on("click", function (event) {
 
   event.preventDefault()
@@ -38,9 +40,11 @@ $("#add-artist").on("click", function (event) {
   console.log(artist);
 });
 
+//render buttons for the array
 renderButtons();
 
-$(document).on("click", '.artist' , function () {
+//on click function to display gifs using am ajax call
+$(document).on("click", '.artist', function () {
 
   $("#gifDiv").empty();
 
@@ -71,9 +75,10 @@ $(document).on("click", '.artist' , function () {
 
         var artistImage = $("<img>");
 
+        //set attributes for the still and animated gif
         artistImage.attr("src", results[i].images.fixed_height_still.url)
-        .attr("data-still", results[i].images.fixed_height_still.url)
-        .attr("data-animate", results[i].images.fixed_height.url)
+          .attr("data-still", results[i].images.fixed_height_still.url)
+          .attr("data-animate", results[i].images.fixed_height.url)
 
         artistImage.addClass("artistImage");
         artistImage.attr("src", results[i].images.fixed_height.url);
@@ -86,14 +91,13 @@ $(document).on("click", '.artist' , function () {
 
       }
     }
-
     console.log(response);
-
   });
 
 });
 
-$(document).on("click", '.artistImage' , function () {
+//click function to animate and make gif still
+$(document).on("click", '.artistImage', function () {
 
   var state = $(this).attr("data-state");
 
