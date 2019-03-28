@@ -1,7 +1,9 @@
 // create the variable for the array of topics
-var topics = ["Metallica", "Green Day", "Slayer", "Behemoth", "Motley Crue",
-  "Eminem", "2pac", "Biggie Smalls", "Tech N9ne", "Wiz Khalifa", "Snoop Dogg", "Yelawolf", "Mozzy",
-  "Kendrick Lamar", "J Cole", "ScHoolboy Q", "Hopsin", "Slipknot", "Soundgarden", "Papa Roach", "Nirvana"];
+var topics = ["Metallica", "Green Day", "Slayer", "Joyner Lucas", "Motley Crue",
+  "Eminem", "2pac", "Biggie Smalls", "Tech N9ne", "Wiz Khalifa", "Snoop Dogg", "Yelawolf", "Nas",
+  "Kendrick Lamar", "J Cole", "ScHoolboy Q", "Hopsin", "Slipknot", "Method Man", "Papa Roach", "Nirvana",
+  "Pantera", "Gene Simons", "Ozzy Osbourne", "Lil Wayne", "T-Pain", "Chris Brown", "XXXTentacion", "System of a Down",
+  "Alice in Chains", "Red Hot Chilli Peppers", "Three Days Grace", "Korn", "Tyler the Creator"];
 
 //create a function to render buttons
 function renderButtons() {
@@ -44,7 +46,7 @@ $(".artist").on("click", function () {
   var artistName = $(this).attr("data-name");
 
   //create a variable for the giphy URL
-  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + artistName + "&limit=10&api_key=YyckZEfvfTxY7XAnYvEnBh6khc3tfCcc";
+  var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + artistName + "&limit=12&api_key=YyckZEfvfTxY7XAnYvEnBh6khc3tfCcc";
 
   //ajax call to get the information from the API
   $.ajax({
@@ -60,16 +62,20 @@ $(".artist").on("click", function () {
 
         var gifContainer = $("<div>");
 
+        gifContainer.addClass("image-align");
+
         var rating = results[i].rating;
 
         var p = $("<p>").text("Rating: " + rating);
 
         var artistImage = $("<img>");
 
+        artistImage.addClass("artistImage");
+
         artistImage.attr("src", results[i].images.fixed_height.url);
 
-
         gifContainer.append(artistImage);
+
         gifContainer.append(p);
 
         $("#gifDiv").prepend(gifContainer);
@@ -82,3 +88,18 @@ $(".artist").on("click", function () {
   });
 
 });
+
+/*$(".artistImage").on("click", function () {
+
+  var state = $(this).attr("data-state");
+
+  if (state === "still") {
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+
+
+});*/

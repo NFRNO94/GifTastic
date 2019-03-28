@@ -11,3 +11,17 @@ body {
     background: black;
     color: white
 }
+
+.artistImage {
+    height: 325px;
+    width: 100%;
+    float: left;
+    border: 2px solid white;
+    margin: 8px;
+}
+
+.image-align {
+    width: 33%;
+    float: left;
+    margin: 3px;
+}
