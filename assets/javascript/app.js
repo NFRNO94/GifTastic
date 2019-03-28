@@ -35,11 +35,12 @@ $("#add-artist").on("click", function (event) {
 
   renderButtons();
 
+  console.log(artist);
 });
 
 renderButtons();
 
-$(".artist").on("click", function () {
+$(document).on("click", '.artist' , function () {
 
   $("#gifDiv").empty();
 
@@ -70,8 +71,11 @@ $(".artist").on("click", function () {
 
         var artistImage = $("<img>");
 
-        artistImage.addClass("artistImage");
+        artistImage.attr("src", results[i].images.fixed_height_still.url)
+        .attr("data-still", results[i].images.fixed_height_still.url)
+        .attr("data-animate", results[i].images.fixed_height.url)
 
+        artistImage.addClass("artistImage");
         artistImage.attr("src", results[i].images.fixed_height.url);
 
         gifContainer.append(artistImage);
@@ -89,17 +93,21 @@ $(".artist").on("click", function () {
 
 });
 
-/*$(".artistImage").on("click", function () {
+$(document).on("click", '.artistImage' , function () {
 
   var state = $(this).attr("data-state");
 
   if (state === "still") {
+
     $(this).attr("src", $(this).attr("data-animate"));
+
     $(this).attr("data-state", "animate");
+
   } else {
     $(this).attr("src", $(this).attr("data-still"));
+
     $(this).attr("data-state", "still");
   }
 
 
-});*/
+});
